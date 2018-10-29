@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html  en="us" ng-app="report">
+<head>
+    <meta charset="utf-8">
+    <title>Filter</title>
+    <link rel="stylesheet" href="{{asset("angular/css/bootstrap.min.css")}}">
+    <script src="{{asset("angular/js/includes/jquery.min.js")}}"></script>
+    <script src="{{asset("angular/js/includes/angular.min.js")}}"></script>      
+</head>
+<body>    
+  <report-bar brand="'Brand'"></report-bar>
+  
+  <script>
+         var getClientListRoute= '{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}';
+  </script>
+  <script src="{{asset("angular/js/report.js")}}"></script>
+  <script src="{{asset("angular/js/components/reportComponent.js")}}"></script>
+  <script src="{{asset("angular/js/includes/bootstrap.min.js")}}"></script>   
+</body>
+</html>

@@ -1,0 +1,60 @@
+<nav>
+  <table class="table table-bordered table-striped table-hover table-list-search">
+    <thead>
+        <tr>
+            <td colspan="4"><center><b>Report</b></center></td></tr>
+            <tr> 
+                <td width="20">
+                    <select ng-model="filterClient.client" ng-change="$ctrl.loadProducts()" >
+                        <option value="" ng-selected="selected">Select Client</option>                                
+                        <option ng-selected="$first" ng-repeat="(id,client) in clients" value="{{client.clientId}}">
+                            {{client.clientName}}
+                        </option>                        
+                    </select>
+                </td>
+                <td width="40">
+                    <select ng-model="filterProduct.product">
+                        <option value="" ng-selected="selected">Select Product</option>                                
+                        <option ng-selected="$first" ng-repeat="(id,product) in products" value="{{product.productId}}">
+                            {{product.productDescription}}
+                        </option>                        
+                    </select>
+                </td>
+                <td width="40">
+                    <select ng-model="filterDate.rDate">
+                        <option value="" ng-selected="selected">Select Dates</option>                                
+                        <option ng-selected="$first" ng-repeat="(id,rDate) in relativeDates" value="{{rDate.value}}">
+                            {{rDate.label}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <button ng-click="$ctrl.generateReport()">Generate Report</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: right;">Total Records: {{$ctrl.totalProducts}}</td>
+              </tr>
+                 <tr>
+                <td colspan="4">
+              <table id="table_format" class="table table-bordered table-striped table-hover table-list-search">
+    <thead>
+        <tr>
+          <th ng-repeat="header in $ctrl.reportDataHeader">{{header.label}} </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="record in $ctrl.reportData">
+        <td>{{record.invoiceNum}}</td>
+        <td>{{record.invoiceDate.date|date }}</td>
+        <td>{{record.productDescription}}</td>
+        <td>{{record.qty}}</td>
+        <td>{{record.price}}</td>
+        <td>{{record.qty * record.price}}</td>
+      </tr>
+      </tbody>
+</table>
+            </td></tr>
+</tbody>
+</table>
+</nav>
