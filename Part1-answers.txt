@@ -1,0 +1,95 @@
+a. Given the following array 
+$array = ['z' => 'abc', 'a' => 'def', 'g' => 'ghi'];
+Write a function that receives the array as a parameter and returns the array in the
+following order
+['a' => 'def', 'g' => 'ghi', 'z' => 'abc']
+
+Answer : 
+	$array1 = ['z' => 'abc', 'a' => 'def', 'g' => 'ghi'];
+
+	function sortByKey(array $myArray)
+	{
+		ksort($myArray);
+		return $myArray;
+	}
+	function arrangeArray(array $myArray)
+	{
+		$array1 = array_values($myArray);
+		ksort($myArray);
+		$myArray1 = $myArray;
+		$array2 = array_values($myArray1);
+		
+		return [$array2,$array1];
+	}
+	$answer1 = sortByKey($array1); 
+	$answer2 =  arrangeArray($array1);
+	echo "Answer 1: ";
+	print_r($answer1);
+	echo "<br/>";
+	echo "Answer 2: ";
+	print_r($answer2);
+	exit;
+	
+###########################################
+b. Is there anything wrong with the following expression. Please explain your answer.
+if(false === (bool) strpos($someString, $someValue)) { ...
+Answer : 
+	- Yes, there is an issue with this statement. This will not work if we search first word of the string.
+	Because strpos will return zero for the first lettter or word. and we have done typecasting using bool data type.
+	So eaven our string is found in the first place it will consider as false.
+
+###########################################
+c. What are some advantages/disadvantages of the following class definition
+	class SomeClass
+	{
+		 protected $property;
+
+		 public function __construct()
+		 {
+			$this->setProperty(new RandomObject);
+		 }
+		 public function getProperty()
+		 {
+			return $this->property;
+		 }
+		 public function setProperty($property)
+		 {
+			$this->property = $property;
+		 }
+	}	
+Answer : 
+	Advantages: The main advantages is we can set a reference of any class("i.e RandomObject") and we can access its public method through the object of current class("SomeClass").
+	Disadvantages: we can not access  any private/protected methods of class("i.e RandomObject") from current class("SomeClass").
+
+###########################################
+d. What is wrong with the following code? Please explain.
+	interface ParkstreetInterface {
+	 public function run($a, $b);
+	}
+	trait ParkstreetTrait {
+	 public function run($a) {
+	 return 1;
+	 }
+	}
+	class Aclass implements ParkstreetInterface
+	{
+	 use ParkstreetTrait;
+	}	
+	
+Answer : 		
+	- in above example the method "run" of ParkstreetTrait class have single argument and method of ParkstreetInterface class have method "run" with two argument. so the argument of the same method should me same number.
+	- also we can achieve result if the "run" method is overwrite in Aclass with same number of arguments.
+	- also we try to access the "run" method with single argument it should give error.
+	
+###########################################
+e. Based on your experience with the MVC/HMVC architectural pattern, would you add another layer to the MVC/HMVC pattern? 
+If so please explain why, where it would go and what would be the exact responsibility of such layer. 	
+
+Answer : 
+	Yes, we can add another layer to the current MVC/HMVC pattern. 
+	- We can achieve it by using dependency Injection which provide us to access any object other class from current object.
+	- Also we can use Factory method as service which can be used in the application from any class and can achieve the result without using any class in current class.
+
+	
+	
+	
